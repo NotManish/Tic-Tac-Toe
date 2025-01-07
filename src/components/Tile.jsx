@@ -3,12 +3,12 @@ import { myContext } from '../App';
 import { useContext, useState, won } from 'react';
 
 function Tile({ indx, className }) {
-    const { tiles, setTiles, player_O, player_X, playerTurn, setPlayerTurn, won } = useContext(myContext);
+    const { tiles, setTiles, player_O, player_X, playerTurn, setPlayerTurn, won, start } = useContext(myContext);
 
     const [isHovered, setIsHovered] = useState(false);
 
     const handleTileClick = (indx) => {
-        if (won == false) {
+        if (won == false && start == true) {
             if (tiles[indx] === "") {
                 tiles[indx] = playerTurn;
                 setTiles(tiles.map((element, index) => {

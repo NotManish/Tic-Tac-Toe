@@ -3,7 +3,7 @@ import { useContext, useEffect } from "react";
 import { myContext } from "../App";
 
 function ShowWinner() {
-    const { tiles, won, setWon, previousPlayerTurn } = useContext(myContext);
+    const { tiles, won, setWon, previousPlayerTurn, playerTurn, start, draw, setDraw } = useContext(myContext);
     useEffect(() => {
         if (tiles[0] == tiles[1] && tiles[1] == tiles[2] && tiles[2] !== "") {
             setWon(true);
@@ -29,10 +29,20 @@ function ShowWinner() {
         if (tiles[2] == tiles[4] && tiles[4] == tiles[6] && tiles[6] !== "") {
             setWon(true);
         }
+
+        checkDraw();
+
     }, [tiles])
+
+    const checkDraw = () => {
+        if (!tiles.includes("")) {
+            setDraw(true);
+        }
+    };
+
     return (
-        <div className="flex justify-center text-xl mt-10 font-bold text-red-600">
-            {won && <p>Congratulations, {previousPlayerTurn} won the game.</p>}
+        start == true && <div className="flex justify-center text-xl mt-10 font-bold text-red-600">
+            {won ? <p>Congratulations, {previousPlayerTurn} won the game.</p> : draw ? <p>Game was draw.</p> : <p>Player "{playerTurn}", place your move.</p>}
         </div>
     );
 }
