@@ -19,12 +19,15 @@ function App() {
   playerTurn === player_X ? previousPlayerTurn = player_O : previousPlayerTurn = player_X;
 
   return (
-    <myContext.Provider value={{ tiles, setTiles, playerTurn, setPlayerTurn, player_O, player_X, won, setWon, previousPlayerTurn, start, setStart, draw, setDraw }}>
+    <div className="bg-slate-100 h-screen">
+      <myContext.Provider value={{ tiles, setTiles, playerTurn, setPlayerTurn, player_O, player_X, won, setWon, previousPlayerTurn, start, setStart, draw, setDraw }}>
       <TicTacToe />
       <Board />
       <ShowWinner />
       <Reset />
     </myContext.Provider>
+    </div>
+    
   )
 }
 
