@@ -2,13 +2,15 @@ import { useContext, useRef } from "react";
 import { myContext } from "../App";
 
 function Reset() {
-    const { tiles, setTiles, won, setWon, start, setStart, setDraw, draw } = useContext(myContext);
+    const { tiles, setTiles, won, setWon, start, setStart, setDraw, draw ,srtikePosition, SetStrikePosition} = useContext(myContext);
     const buttonRef = useRef(null);
 
     const handleReset = () => {
         setTiles(["", "", "", "", "", "", "", "", ""]);
         setWon(false);
         setDraw(false);
+        SetStrikePosition(null);
+        
     }
     const handleStart = () => {
         setStart(true);
